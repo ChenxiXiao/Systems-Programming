@@ -1,0 +1,94 @@
+﻿gcc -Wall -ansi -pedantic -g -c mytr.c
+mytr.c: In function ‘trans’:
+mytr.c:75:5: warning: ISO C90 forbids mixed declarations and code [-Wpedantic]
+     char newset[100];
+     ^
+mytr.c: In function ‘escape’:
+mytr.c:126:20: warning: ISO C forbids empty initializer braces [-Wpedantic]
+     char new[100] ={};
+                    ^
+gcc -Wall -ansi -pedantic -g -o mytr mytr.o
+FAIL: translation test 6 --> Segment Fault --> char newset[100];
+Command: ./mytr 'abcdefghij klmnopqrstuvwxyz1234567890!@#$%^&*"ABCDEFGHIJKLMNOPQRSTUVWXYZ' 'tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt' < input2.txt 
+Your Output:
+
+
+Expected:
+tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+
+
+FAIL: escape test 3.
+Command: ./mytr '\-' 'q' < input3.txt
+Your Output:
+aExpected:
+a\b\c\ 	a	b	cqqq
+a\b\c\ 	a	qqqb	c
+nnn ttt qqq /// """
+. 
+FAIL: escape test 5:
+Command: ./mytr '"' 'q' < input3.txt
+Your Output:
+aExpected:
+a\b\c\ 	a	b	c---
+a\b\c\ 	a	---b	c
+nnn ttt --- /// qqq
+. 
+FAIL: escape test 6.
+Command: ./mytr 'abcd' '\n\t\\-' < input1.txt
+Your Output:
+
+\ 
+\ 
+\ n\ \\\ \sn\\ s \snx\s\ ;lkj wef\ 
+\ nnn nn\nsn
+
+
+Expected:
+
+	\ 
+	\ 
+	\ 	- 
+-
+
+
+ 
+s	-
+-f
+ s-f 
+s	x\xf-s
+ ;lkj wef
+ \	
+ 			 		\\	s	
+	
+	
+. 
+FAIL: escape test 8.
+Command: ./mytr -d '"' < input3.txt
+Your Output:
+
+Expected:
+a\b\c\ 	a	b	c---
+a\b\c\ 	a	---b	c
+nnn ttt --- /// 
+. 
+Passed 6/7 translation tests for a score of 34.00
+Passed 3/3 deletion tests for a score of 30.00
+Passed 5/9 escape tests for a score of 11.00
+Passed 7/7 error tests for a score of 10.00
+Final score: 85.00
+
+Complexity Scores
+Score | ln-ct | nc-lns| file-name(line): proc-name
+    4       4       4   mytr.c(156): copy
+   35      29      24   mytr.c(6): main
+   41      19      18   mytr.c(41): delete
+   62      51      34   mytr.c(63): trans
+  121      33      29   mytr.c(118): escape
+total nc-lns      109
+Complexity Score: 263
+Maximum Function Score: 121
+Average Score: 52.60
+Ratio of top 25% to total: .69
+
+
+chxiao               Tests: 85.00/100	Total: 85.00/100	

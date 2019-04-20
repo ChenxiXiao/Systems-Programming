@@ -1,0 +1,133 @@
+gcc -Wall -ansi -pedantic -g -c mytr.c
+mytr.c: In function ‘trans’:
+mytr.c:73:5: warning: ISO C90 forbids mixed declarations and code [-Wpedantic]
+     char newset[100];
+     ^
+mytr.c: In function ‘escape’:
+mytr.c:107:13: warning: value computed is not used [-Wunused-value]
+             *size--;
+             ^
+gcc -Wall -ansi -pedantic -g -o mytr mytr.o
+FAIL: translation test 4. 
+Your Output:
+tsc tsc tsc sd tdttt tssdtdft sdf tssxcxfdst ;lkj weft cst sss ssccssststs
+
+Expected:
+lsc lsc lsc sd ldlll lssdldfl sdf lssxcxfdsl ;lkj wefl csl sss ssccssslsls
+
+FAIL: translation test 6. 
+Your Output:
+
+
+Expected:
+tttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttttt
+
+FAIL: escape test 2. 
+Your Output:
+aqbqcq qaqbqc---
+aqbqcq qaq---bqc
+nnn ttt --- /// """
+
+Expected:
+a\b\c\ qaqbqc---
+a\b\c\ qaq---bqc
+nnn ttt --- /// """
+. 
+FAIL: escape test 3. 
+Your Output:
+aqbqcq 	a	b	c---
+aqbqcq 	a	---b	c
+nnn ttt --- /// """
+
+Expected:
+a\b\c\ 	a	b	cqqq
+a\b\c\ 	a	qqqb	c
+nnn ttt qqq /// """
+. 
+FAIL: escape test 4. 
+Your Output:
+aqbqcq 	a	b	c---qaqbqcq 	a	---b	cqnnn ttt --- /// """q
+
+Expected:
+a\b\c\ 	a	b	c---qa\b\c\ 	a	---b	cqnnn ttt --- /// """q
+. 
+FAIL: escape test 5: 
+Your Output:
+aqbqcq 	a	b	c---
+aqbqcq 	a	---b	c
+nnn ttt --- /// """
+
+Expected:
+a\b\c\ 	a	b	c---
+a\b\c\ 	a	---b	c
+nnn ttt --- /// qqq
+. 
+FAIL: escape test 6. 
+Your Output:
+\
+\ \
+\ \
+\ 
+t 	\\ \s
+t	f\ stf \s
+xts\ ;lkj wef\ \
+\ 
+
+
+ 
+
+\
+s
+\
+\n
+Expected:
+
+	\ 
+	\ 
+	\ 	- 
+-
+
+
+ 
+s	-
+-f
+ s-f 
+s	x\xf-s
+ ;lkj wef
+ \	
+ 			 		\\	s	
+	
+	
+. 
+FAIL: escape test 8. 
+Your Output:
+abc 	a	b	c---
+abc 	a	---b	c
+nnn ttt --- /// """
+
+Expected:
+a\b\c\ 	a	b	c---
+a\b\c\ 	a	---b	c
+nnn ttt --- /// 
+. 
+Passed 5/7 translation tests for a score of 28.40
+Passed 3/3 deletion tests for a score of 30.00
+Passed 3/9 escape tests for a score of 6.60
+Passed 7/7 error tests for a score of 10.00
+Final score: 75.00
+
+Complexity Scores
+Score | ln-ct | nc-lns| file-name(line): proc-name
+    4       4       4   mytr.c(122): copy
+   35      29      24   mytr.c(6): main
+   41      19      18   mytr.c(41): delete
+   70      32      29   mytr.c(63): trans
+   79      18      17   mytr.c(98): escape
+total nc-lns       92
+Complexity Score: 229
+Maximum Function Score: 79
+Average Score: 45.80
+Ratio of top 25% to total: .65
+
+
+chxiao               Tests: 75.00/100	Total: 75.00/100	
