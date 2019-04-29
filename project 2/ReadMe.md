@@ -7,5 +7,9 @@ _Sample Run_
 % fw nonexistant
 nonexistant: No such file or directory
 The top 10 words (out of 0) are:
+
 % fw -n fishsticks
 usage: fw [-n num] [ file1 [ file 2 ...] ]
+
+![Screen Shot 2019-04-27 at 10 57 26 AM](https://user-images.githubusercontent.com/45242968/56930067-67c04700-6a90-11e9-90fe-910562beeaee.png)
+
